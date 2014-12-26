@@ -25,7 +25,6 @@ Using the `fig` command
     TMP="$(mktemp -d)" \
       && git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-mongodb.git "${TMP}" \
       && cd "${TMP}" \
-      && git checkout dev \
       && sudo fig up
 
 ## Build the image
@@ -33,7 +32,6 @@ Using the `fig` command
     TMP="$(mktemp -d)" \
       && git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-mongodb.git "${TMP}" \
       && cd "${TMP}" \
-      && git checkout dev \
       && sudo docker build -t simpledrupalcloud/mongodb:latest . \
       && cd -
 
