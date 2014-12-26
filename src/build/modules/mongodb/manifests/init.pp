@@ -19,7 +19,7 @@ class mongodb {
   exec { 'tar xzf mongodb-linux-x86_64-2.6.6.tgz':
     cwd => '/tmp',
     path => ['/bin'],
-    require => Eexc['/bin/su - root -c "cd /tmp && cat mongodb-linux-x86_64-2.6.6.tgz.gz.* | tar xz"']
+    require => Exec['/bin/su - root -c "cd /tmp && cat mongodb-linux-x86_64-2.6.6.tgz.gz.* | tar xz"']
   }
 
   exec { 'rsync -avz mongodb-linux-x86_64-2.6.6/ /opt/mongodb':
