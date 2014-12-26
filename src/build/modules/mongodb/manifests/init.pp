@@ -12,14 +12,14 @@ class mongodb {
     source => 'puppet:///modules/mongodb/tmp',
   }
 
-  exec { '/bin/su - root -c "cd /tmp && cat mongodb-linux-x86_64-2.6.6.tgz.gz.* | tar xz"':
+  exec { '/bin/su - root -c "cd /tmp && cat mongodb-linux-x86_64-2.6.6.tgz.gz.* | gunzip > mongodb-linux-x86_64-2.6.6.tgz"':
     require => File['/tmp']
   }
 
   exec { 'tar xzf mongodb-linux-x86_64-2.6.6.tgz':
     cwd => '/tmp',
     path => ['/bin'],
-    require => Exec['/bin/su - root -c "cd /tmp && cat mongodb-linux-x86_64-2.6.6.tgz.gz.* | tar xz"']
+    require => Exec['/bin/su - root -c "cd /tmp && cat mongodb-linux-x86_64-2.6.6.tgz.gz.* | gunzip > mongodb-linux-x86_64-2.6.6.tgz"']
   }
 
   exec { 'rsync -avz mongodb-linux-x86_64-2.6.6/ /opt/mongodb':
