@@ -10,7 +10,7 @@ Using the `docker` command:
       --name "${CONTAINER}" \
       -h "${CONTAINER}" \
       -v /mongodb/data \
-      simpledrupalcloud/data:dev
+      simpledrupalcloud/data:latest
 
     CONTAINER="mongodb" && sudo docker run \
       --name "${CONTAINER}" \
@@ -18,14 +18,13 @@ Using the `docker` command:
       -p 27017:27017 \
       --volumes-from mongodbdata \
       -d \
-      simpledrupalcloud/mongodb:dev
+      simpledrupalcloud/mongodb:latest
 
 Using the `fig` command
 
     TMP="$(mktemp -d)" \
       && git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-mongodb.git "${TMP}" \
       && cd "${TMP}" \
-      && git checkout dev \
       && sudo fig up
 
 ## Build the image
@@ -33,8 +32,7 @@ Using the `fig` command
     TMP="$(mktemp -d)" \
       && git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-mongodb.git "${TMP}" \
       && cd "${TMP}" \
-      && git checkout dev \
-      && sudo docker build -t simpledrupalcloud/mongodb:dev . \
+      && sudo docker build -t simpledrupalcloud/mongodb:latest . \
       && cd -
 
 ## Back up MongoDB data
@@ -43,7 +41,7 @@ Using the `fig` command
       --rm \
       --volumes-from mongodbdata \
       -v $(pwd):/backup \
-      simpledrupalcloud/data:dev tar czvf /backup/mongodbdata.tar.gz /mongodb/data
+      simpledrupalcloud/data:latest tar czvf /backup/mongodbdata.tar.gz /mongodb/data
 
 ## Restore MongoDB data from a backup
 
@@ -51,7 +49,7 @@ Using the `fig` command
       --rm \
       --volumes-from mongodbdata \
       -v $(pwd):/backup \
-      simpledrupalcloud/data:dev tar xzvf /backup/mongodbdata.tar.gz
+      simpledrupalcloud/data:latest tar xzvf /backup/mongodbdata.tar.gz
 
 ## License
 
