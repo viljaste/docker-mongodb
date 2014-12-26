@@ -1,12 +1,12 @@
 mongodb:
-  image: simpledrupalcloud/mongodb:latest
+  image: simpledrupalcloud/mongodb:dev
   hostname: mongodb
   ports:
     - "27017:27017"
   volumes_from:
     - mongodbdata
 mongodbdata:
-  image: simpledrupalcloud/data:latest
+  image: simpledrupalcloud/data:dev
   hostname: mongodbdata
   volumes:
     - /mongodb/data
