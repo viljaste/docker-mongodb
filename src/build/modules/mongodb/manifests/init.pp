@@ -1,10 +1,6 @@
 class mongodb {
   require mongodb::supervisor
 
-  exec { 'mkdir -p /mongodb/data':
-    path => ['/bin']
-  }
-
   file { '/tmp':
     ensure => directory,
     recurse => true,

@@ -9,4 +9,4 @@ mongodbdata:
   image: simpledrupalcloud/data:dev
   hostname: mongodbdata
   volumes:
-    - /mongodb/data
+    - /mongodb

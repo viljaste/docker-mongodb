@@ -9,7 +9,7 @@ Using the `docker` command:
     CONTAINER="mongodbdata" && sudo docker run \
       --name "${CONTAINER}" \
       -h "${CONTAINER}" \
-      -v /mongodb/data \
+      -v /mongodb \
       simpledrupalcloud/data:dev
 
     CONTAINER="mongodb" && sudo docker run \
@@ -43,7 +43,7 @@ Using the `fig` command
       --rm \
       --volumes-from mongodbdata \
       -v $(pwd):/backup \
-      simpledrupalcloud/data:dev tar czvf /backup/mongodbdata.tar.gz /mongodb/data
+      simpledrupalcloud/data:dev tar czvf /backup/mongodbdata.tar.gz /mongodb
 
 ## Restore MongoDB data from a backup
 
